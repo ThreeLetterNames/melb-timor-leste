@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import org.rhok.linguist.R;
+import org.rhok.linguist.activity.IntentUtil;
 import org.rhok.linguist.code.entity.Person;
 import org.rhok.linguist.activity.location.InterviewMunicipalityActivity;
 
@@ -19,15 +20,17 @@ public class InterviewMoreLanguagesActivity extends BaseInterviewActivity {
         setContentView(R.layout.activity_interview_more_languages);
 
         Bundle extras = getIntent().getExtras();
-        _person = (Person) extras.getSerializable("Person");
+        _person = (Person) extras.getSerializable(IntentUtil.ARG_PERSON);
         _lastLanguageNumber = extras.getInt("LastLanguageNumber");
     }
 
     public void noButtonClick(View view)
     {
         Intent intent = new Intent(this, InterviewMunicipalityActivity.class);
-        intent.putExtra("Person", _person);
+        intent.putExtra(IntentUtil.ARG_PERSON, _person);
         intent.putExtra("mode", "lives");
+        intent.putExtra(InterviewNameActivity.ARG_FINAL_INTENT,
+                getIntent().getParcelableExtra(InterviewNameActivity.ARG_FINAL_INTENT));
         startActivity(intent);
     }
 
@@ -46,8 +49,10 @@ public class InterviewMoreLanguagesActivity extends BaseInterviewActivity {
         }
 
         intent.putExtra("LanguageNumber", _lastLanguageNumber +1);
-        intent.putExtra("Person", _person);
+        intent.putExtra(IntentUtil.ARG_PERSON, _person);
         intent.putExtra("NEXT_ACTIVITY", "MoreLanguages");
+        intent.putExtra(InterviewNameActivity.ARG_FINAL_INTENT,
+                getIntent().getParcelableExtra(InterviewNameActivity.ARG_FINAL_INTENT));
         startActivity(intent);
 
     }

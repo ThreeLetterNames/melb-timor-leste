@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/app_window_padding"
+    tools:context="org.rhok.linguist.activity.recording.RecordingAudioLocalActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageView
+
+            android:src="@drawable/word1"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="200dp"
+            android:id="@+id/captureImageView" />
+
+        <TextView
+            android:paddingTop="0px"
+            android:layout_marginTop="10px"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/interview_transcribe"
+            android:id="@+id/recordingQuestionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+        <EditText
+            android:paddingTop="0px"
+            android:singleLine="true"
+            android:layout_marginTop="0px"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/answerEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/answersListView"
+            android:listSelector="@drawable/list_item_selector"
+            />
+
+    </LinearLayout>
+
+    <Button style="@style/nextButtonStyle" android:id="@+id/nextRecordingButton" />
+
+
+
+</RelativeLayout>

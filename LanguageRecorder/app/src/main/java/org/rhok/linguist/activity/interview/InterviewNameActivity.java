@@ -7,11 +7,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.rhok.linguist.R;
+import org.rhok.linguist.activity.IntentUtil;
 import org.rhok.linguist.code.DatabaseHelper;
 import org.rhok.linguist.code.entity.Person;
 
 public class InterviewNameActivity extends BaseInterviewActivity {
 
+    /**
+     * Put the intent for where you will go once the Interviewee flow is finished (in InterviewLivedLifeActivity)
+     *
+     * We will add IntentUtil.ARG_PERSON_ID to it.
+     */
+    public static final String ARG_FINAL_INTENT = "org.rhok.linguist.activity.interview.finalIntent";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +47,8 @@ public class InterviewNameActivity extends BaseInterviewActivity {
             dbHelper.insertPerson(newPerson);
 
             Intent intent = new Intent(this, InterviewAgeActivity.class);
-            intent.putExtra("person", newPerson);
+            intent.putExtra(IntentUtil.ARG_PERSON, newPerson);
+            intent.putExtra(ARG_FINAL_INTENT, getIntent().getParcelableExtra(ARG_FINAL_INTENT));
             startActivity(intent);
         }
     }
